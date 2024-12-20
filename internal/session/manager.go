@@ -23,7 +23,7 @@ func CreateSession(player1,player2 string) *Session{
 	sessionId := fmt.Sprintf("session-d%",len(ActiveSessions)+1)
 
 	session := &Session{
-		Id: sessionId,
+		ID: sessionId,
 		PlayerIDs: []string{"player1", "player2"},
 	}
 

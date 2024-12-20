@@ -9,7 +9,7 @@ import (
 )
 
 func StartMatchingWorker(){
-	ctx := context.BackGround
+	ctx := context.Background() // Corrected the context function
 
 	for{
 		players, err := redisClient.ZRangeWithScores(ctx, "matchmaking_queue",0,1).Result()
@@ -27,10 +27,10 @@ func StartMatchingWorker(){
 		// Match players (for example, match first 2 players)
         matchPlayers(players[0],players[1]);
 
-		rangeBy := &redis.ZRangeBy{
-			Min: "0",    // Define the minimum score
-			Max: "1000", // Define the maximum score
-		}
+		// rangeBy := &redis.ZRangeBy{
+		// 	Min: "0",    // Define the minimum score
+		// 	Max: "1000", // Define the maximum score
+		// }
 
 		 
 

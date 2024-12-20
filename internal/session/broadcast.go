@@ -1,6 +1,7 @@
 package session
 
 import (
+	"log"
 	"github.com/gorilla/websocket"
 	"net/http"
 )
@@ -16,12 +17,14 @@ func HandleWebSocket(w http.ResponseWriter, r *http.Request){
 	defer conn.Close()
 
 	for {
-		_,msg, err:= conn.ReadMessage()
+		msgType,msg, err:= conn.ReadMessage()
 		if err != nil{
 			if err!=nil{
-				//Println("Error in reading message",err)
+				//Println("Error in reading message",err,msg)
+
 				return
 			}
+			log.Printf("Received message: %s (Type: %d)", msg, msgType)
 			//Println("received message",string(msg))
 
 			//Handle incoming message (e.g., game move or chat message)
