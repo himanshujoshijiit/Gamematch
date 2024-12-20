@@ -1,10 +1,10 @@
 package matchmaking
 
 import (
-	"context",
-	"fmt",
-	"log",
-	"time",
+	"context"
+	"fmt"
+	"log"
+	"time"
 	"github.com/go-redis/redis/v8"
 )
 

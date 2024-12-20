@@ -1,10 +1,10 @@
  package main 
 
  import(
-	"log",
-	"net/http",
-	"go-matchmaking/internal/matchmaking",
-	"go-matchmaking/internal/session"
+	"log"
+	"net/http"
+	"Gamematch/internal/matchmaking"
+	"Gamematch/internal/session"
  )
 
  func main(){

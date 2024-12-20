@@ -1,8 +1,8 @@
 package session
 
 import (
-	"github.com/gorilla/websocket",
-	"fmt",
+	"github.com/gorilla/websocket"
+	"fmt"
 	"net/http"
 )
 
@@ -13,7 +13,7 @@ func HandleWebSocket(w http.ResponseWriter, r *http.Request){
 		log.println("failed to upgrade to websocket",err)
 		return
 	}
-	defer.conn.close()
+	defer conn.close()
 
 	for {
 		_,msg, err:= conn.ReadMessage()

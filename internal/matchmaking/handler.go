@@ -1,9 +1,9 @@
 package matchmaking
 
 import (
-	"context",
-	"fmt",
-	"github.com/go-redis/redis/v8",
+	"context"
+	"fmt"
+	"github.com/go-redis/redis/v8"
 	"net/http"
 )
 
@@ -38,7 +38,8 @@ func AddPlayerToQueue(w http.ResponseWriter,r *http.Request){
 	return
   }
   w.WriteHeader(http.StatusOK)
-  w.write([]byte(fmt.Sprintf"Player %s added to queue with score %f", request.PlayerID, request.Score))
+  w.Write([]byte(fmt.Sprintf("Player %s added to queue with score %f", request.PlayerID, request.Score)))
+ 
 }
 
 // AddToQueue adds the player to the Redis sorted set
