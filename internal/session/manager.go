@@ -1,13 +1,17 @@
 package session
 
-import "fmt"
-
+import (
+	"fmt"
+)
+ 
 // Session holds details about a multiplayer session
 
-type session struct{
-	ID string
-	Player []string
+type Session struct {
+    ID        string   // Unique identifier for the session
+    PlayerIDs []string // List of player IDs in the session
 }
+
+
 
 // ActiveSessions keeps track of active game sessions
 
@@ -15,12 +19,12 @@ var ActiveSessions = make(map[string]*Session)
 
 // CreateSession creates a new multiplayer session
 
-func CreateSession(player1,player2 string) *session{
+func CreateSession(player1,player2 string) *Session{
 	sessionId := fmt.Sprintf("session-d%",len(ActiveSessions)+1)
 
-	session := &session{
+	session := &Session{
 		Id: sessionId,
-		Players :[]string{player1,player2},
+		PlayerIDs: []string{"player1", "player2"},
 	}
 
 	ActiveSessions[sessionId] = session
@@ -29,7 +33,7 @@ func CreateSession(player1,player2 string) *session{
 
 // HandleWebSocket will handle the real-time communication for multiplayer sessions
 
-func HandleWebSocket(w http.ResponseWriter,r *http.request){
-	    // Upgrade HTTP connection to WebSocket and handle communication
+// func HandleWebSocket(w http.ResponseWriter,r *http.request){
+// 	    // Upgrade HTTP connection to WebSocket and handle communication
 
-}
+// }

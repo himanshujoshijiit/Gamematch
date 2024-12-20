@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/go-redis/redis/v8"
 	"net/http"
+	"encoding/json"
 )
 
 var redisClient *redis.Client
@@ -38,15 +39,15 @@ func AddPlayerToQueue(w http.ResponseWriter,r *http.Request){
 	return
   }
   w.WriteHeader(http.StatusOK)
-  w.Write([]byte(fmt.Sprintf("Player %s added to queue with score %f", request.PlayerID, request.Score)))
+  w.Write([]byte(fmt.Sprintf("Player %s added to queue with score %f", request.PlayerId, request.Score)))
  
 }
 
 // AddToQueue adds the player to the Redis sorted set
 
 
-func AddToQueue(client *redis.Client,playerId string, score float64) error{
-	ctx := context.BackGround()
+func addToQueue(client *redis.Client,playerId string, score float64) error{
+	ctx := context.Background()
 	return client.ZAdd(ctx,"matchmaking_queue",&redis.Z{
 		Score: score,
 		Member: playerId,
