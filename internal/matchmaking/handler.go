@@ -32,6 +32,9 @@ func AddPlayerToQueue(w http.ResponseWriter,r *http.Request){
    }
 
        // Add player to the Redis queue
+  if(redi!=nil){
+	http.Error(w,"Redis client is not intialised",http.StatusInternalServerError);
+  }
 
   err = addToQueue(redisClient,request.PlayerId,request.Score)
   if err != nil{

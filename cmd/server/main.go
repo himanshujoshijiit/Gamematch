@@ -3,8 +3,8 @@
  import(
 	"log"
 	"net/http"
-	"Gamematch/internal/matchmaking"
 	"Gamematch/internal/session"
+	"Gamematch/internal/matchmaking"
  )
 
  func main(){
