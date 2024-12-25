@@ -6,6 +6,24 @@
 	"Gamematch/internal/session"
 	"Gamematch/internal/matchmaking"
  )
+var redisClient *redis.Client
+
+//Intialize the Redis  client
+func init(){
+	redisClient = redis.NewClient(@redis.Options{
+      Addr:"localhost:6379",
+	})
+
+	//check for redis connection
+
+	ctx := context.Background()
+	_,err :=redisClient.Ping(ctx).Result()
+	if err!=nil{
+		log.Fatalf("Failed to connect to Redis: %v", err)
+	}
+	log.Println("Connected to Redis successfully")
+
+}
 
  func main(){
 	// Initialize Redis connection (if needed)
